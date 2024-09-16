@@ -1,0 +1,64 @@
+.app {
+  border: solid;
+  background-color: bisque;
+}
+
+h1 {
+  font-size: 40px;
+  color: black;
+}
+
+a {
+  text-decoration: none;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: azure;
+}
+
+.article-title {
+  font-size: medium;
+}
+
+.article-topic {
+  font-size: small;
+}
+
+.article-container {
+  display: grid;
+  border: solid;
+  justify-content: center;
+  box-shadow: yellow;
+  grid-template-columns: 25% 25% 25% 25%;
+  padding: 2%;
+  margin: 2%;
+  border-radius: 10px;
+}
+
+.article-card {
+  border: solid;
+  margin: 5%;
+  overflow: hidden;
+  height: min-content;
+  border-radius: 10px;
+}
+
+.article-image {
+  width: 80%;
+  height: 80%;
+}
+
+@media screen and (max-width: 600px) {
+  .item-container {
+    display: grid;
+    border: solid;
+    justify-content: center;
+    box-shadow: yellow;
+    grid-template-columns: 50% 50%;
+    padding: 2%;
+  }
+}
