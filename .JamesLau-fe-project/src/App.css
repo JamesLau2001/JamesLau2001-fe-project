@@ -88,12 +88,11 @@ a {
   font-size: 1.25rem;
 }
 
-.article-votes{
-  display:flex;
+.article-votes {
+  display: flex;
   margin: 2%;
   padding: 1rem 7.5rem;
   justify-content: space-between;
-  
 }
 
 .article-current-votes {
@@ -108,15 +107,42 @@ a {
   padding: 1rem;
 }
 
-.comments{
+.comments {
   border-style: groove;
 }
 
-.individual-image{
+.individual-image {
   width: 90%;
   height: 90%;
 }
 
+.post-comment-form {
+  border-style: groove;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: auto;
+}
+
+.post-comment-label {
+  margin: 2%;
+  padding: 1rem;
+}
+
+.post-comment-input {
+  margin: 2%;
+  padding: 1rem;
+  height: 5rem;
+  border-radius: 10px;
+}
+
+.post-new-comment-button {
+  margin: 2% auto;
+  padding: 1rem;
+  width: 20%;
+  border-radius: 10px;
+}
 
 @media screen and (max-width: 600px) {
   .article-container {
@@ -153,5 +179,4 @@ a {
   .article-votes {
     font-size: 0.9rem;
   }
-
 }
