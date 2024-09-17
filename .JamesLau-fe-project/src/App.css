@@ -88,7 +88,15 @@ a {
   font-size: 1.25rem;
 }
 
-.article-votes {
+.article-votes{
+  display:flex;
+  margin: 2%;
+  padding: 1rem 7.5rem;
+  justify-content: space-between;
+  
+}
+
+.article-current-votes {
   text-align: left;
   margin: 2%;
   font-size: 1rem;
@@ -102,6 +110,11 @@ a {
 
 .comments{
   border-style: groove;
+}
+
+.individual-image{
+  width: 90%;
+  height: 90%;
 }
 
 
