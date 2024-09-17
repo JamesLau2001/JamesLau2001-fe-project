@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { getArticleById, patchVotesByArticleId } from "../api";
 
 import Comments from "./Comments";
@@ -41,6 +41,9 @@ const ArticlePage = () => {
         <button onClick={() => handleVote(-1)}>Dislike</button>
       </div>
       <p>Written at: {article.created_at}</p>
+
+      <Link to={`/articles/${article_id}/comments`}><button>Post Comment</button></Link>
+
       <Comments article_id={article_id} />
     </div>
   );
