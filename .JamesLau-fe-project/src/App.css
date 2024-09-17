@@ -1,10 +1,11 @@
 .app {
   border: solid;
   background-color: bisque;
+  padding: 1rem;
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 2rem;
   color: black;
 }
 
@@ -32,66 +33,112 @@ a {
   display: grid;
   border: solid;
   justify-content: center;
-  box-shadow: yellow;
-  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
   padding: 2%;
   margin: 2%;
   border-radius: 10px;
+  box-shadow: 0 0 10px yellow;
 }
 
 .article-card {
   border: solid;
-  margin: 5%;
-  overflow: hidden;
-  height: min-content;
+  padding: 1rem;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: min-content;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 .article-image {
-  width: 80%;
-  height: 80%;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 
-.author-topic{
-    display:flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+.author-topic {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
-.article-page{
-    border-style:groove;
-    margin: 2%;
+.article-page {
+  border-style: groove;
+  margin: 2%;
+  padding: 1rem;
 }
 
-.article-title{
-    font-size: 30px;
+.article-title {
+  font-size: 2rem;
 }
 
-.author-topic-tags{
-    flex: 1;
-    font-size: 18px;
+.author-topic-tags {
+  flex: 1;
+  font-size: 1rem;
 }
 
 .article-body {
-    text-align: left;
-    border-style:groove;
-    margin: 2%;
-    font-size: 20px;
+  text-align: left;
+  border-style: groove;
+  margin: 2%;
+  padding: 1rem;
+  font-size: 1.25rem;
 }
 
-.article-votes{
-    text-align: left;
-    margin: 2%;
-    font-size: 18px
+.article-votes {
+  text-align: left;
+  margin: 2%;
+  font-size: 1rem;
 }
+
+.comment-card {
+  border-style: groove;
+  margin: 2%;
+  padding: 1rem;
+}
+
+.comments{
+  border-style: groove;
+}
+
 
 @media screen and (max-width: 600px) {
-  .item-container {
-    display: grid;
-    border: solid;
-    justify-content: center;
-    box-shadow: yellow;
-    grid-template-columns: 50% 50%;
-    padding: 2%;
+  .article-container {
+    grid-template-columns: 1fr;
+    padding: 1rem;
   }
+
+  .article-card {
+    margin: 10px 0;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .article-title {
+    font-size: 1.5rem;
+  }
+
+  .author-topic {
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+
+  .author-topic-tags {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+  }
+
+  .article-body {
+    font-size: 1rem;
+  }
+
+  .article-votes {
+    font-size: 0.9rem;
+  }
+
 }

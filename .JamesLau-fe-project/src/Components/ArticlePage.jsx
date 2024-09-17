@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById } from "../api";
-
+import Comments from "./Comments"
 const ArticlePage = () => {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
@@ -27,6 +27,7 @@ const ArticlePage = () => {
       <p className="article-body">{article.body}</p>
       <p className="article-votes">Votes: {article.votes}</p>
       <p>Written at: {article.created_at}</p>
+      <Comments article_id = {article_id}/>
     </div>
   );
 };

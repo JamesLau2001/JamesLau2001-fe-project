@@ -13,7 +13,6 @@ const ArticleContainer = () => {
 
   return (
     <>
-
       <div className="article-container">
         {articles.map((article, index) => {
           return <ArticleCard key={index} article={article} />;
