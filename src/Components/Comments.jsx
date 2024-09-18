@@ -11,7 +11,7 @@ const Comments = ({ article_id }) => {
       setComments(data);
       setIsLoading(false);
     });
-  }, [article_id]);
+  }, []);
 
   if (isLoading) {
     return <p>Loading comments...</p>;

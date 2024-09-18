@@ -37,3 +37,9 @@ export const postComment = (article_id, body, author) => {
       return data.comment;
     });
 };
+
+export const getUsers = () => {
+  return ncNews.get(`/api/users`).then(({data})=>{
+    return data.users
+  })
+}

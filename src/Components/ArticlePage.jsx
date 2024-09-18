@@ -15,7 +15,8 @@ const ArticlePage = () => {
       setCurrentVotes(data.votes);
       setLoading(false);
     });
-  }, [article_id]);
+  }, []);
+
 
   const handleVote = (voteToHandle) => {
     setCurrentVotes((prevVotes) => prevVotes + voteToHandle);
