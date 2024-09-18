@@ -43,3 +43,7 @@ export const getUsers = () => {
     return data.users
   })
 }
+
+export const deleteComment = (comment_id) => {
+  return ncNews.delete(`/api/comments/${comment_id}`)
+}

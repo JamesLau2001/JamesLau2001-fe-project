@@ -15,7 +15,7 @@ function App() {
       <Login username={username} setUsername={setUsername} />
       <Routes>
         <Route path="/" element={<ArticleContainer />} />
-        <Route path="/articles/:article_id" element={<ArticlePage />} />
+        <Route path="/articles/:article_id" element={<ArticlePage username = {username}/>} />
         <Route
           path="/articles/:article_id/comments"
           element={<PostCommentForm username = {username}/>}

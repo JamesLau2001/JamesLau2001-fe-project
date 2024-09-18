@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getCommentsByArticleId } from "../api";
 import CommentCard from "./CommentCard";
 
-const Comments = ({ article_id }) => {
+const Comments = ({ article_id, username }) => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -24,7 +24,7 @@ const Comments = ({ article_id }) => {
         <p>No comments yet. Be the first to comment!</p>
       ) : (
         comments.map((comment) => (
-          <CommentCard key={comment.comment_id} comment={comment} />
+          <CommentCard key={comment.comment_id} comment={comment} username={username} />
         ))
       )}
     </div>
