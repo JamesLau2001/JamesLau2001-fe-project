@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { getArticleById, patchVotesByArticleId } from "../api";
 
 import Comments from "./Comments";
-const ArticlePage = () => {
+const ArticlePage = ({username}) => {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
   const [loading, setLoading] = useState(true);
@@ -45,7 +45,7 @@ const ArticlePage = () => {
 
       <Link to={`/articles/${article_id}/comments`}><button>Post Comment</button></Link>
 
-      <Comments article_id={article_id} />
+      <Comments article_id={article_id} username = {username}/>
     </div>
   );
 };
