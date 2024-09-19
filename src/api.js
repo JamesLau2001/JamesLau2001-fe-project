@@ -4,8 +4,8 @@ const ncNews = axios.create({
   baseURL: "https://james-lau-nc-news.onrender.com/",
 });
 
-export const getArticles = () => {
-  return ncNews.get("/api/articles").then(({ data }) => {
+export const getArticles = (query) => {
+  return ncNews.get("/api/articles", query).then(({ data }) => {
     return data.articles;
   });
 };
@@ -46,4 +46,10 @@ export const getUsers = () => {
 
 export const deleteComment = (comment_id) => {
   return ncNews.delete(`/api/comments/${comment_id}`)
+}
+
+export const getTopics = () => {
+  return ncNews.get(`/api/topics`).then(({data})=>{
+    return data.topics
+  })
 }

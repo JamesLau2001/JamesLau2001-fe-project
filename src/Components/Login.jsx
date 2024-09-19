@@ -13,9 +13,10 @@ const Login = ({ username, setUsername }) => {
   const handleChange = (event) => {
     setUsername(event.target.value);
   };
-  
+
   return (
-    <div>
+    <div className="login">
+      <label>Choose a user: </label>
       <select onChange={handleChange} value={username}>
         <option value="" disabled>
           Select User
