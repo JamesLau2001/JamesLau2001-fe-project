@@ -7,34 +7,71 @@ const ArticleContainer = () => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [error, setError] = useState(null);
   const [topics, setTopics] = useState([]);
 
   const topicQuery = searchParams.get("topic") || "";
-  const params = { params: { topic: topicQuery } };
-  useEffect(() => {
-    getTopics().then((data) => {
-      setTopics(data);
-    });
+  const sortByQuery = searchParams.get("sort_by") || "created_at";
+  const orderQuery = searchParams.get("order") || "desc";
+  const params = {
+    params: { topic: topicQuery, sort_by: sortByQuery, order: orderQuery },
+  };
 
-    getArticles(params).then((data) => {
-      setArticles(data);
-      setLoading(false);
-    });
-  }, [topicQuery]);
+  useEffect(() => {
+    setLoading(true);
+    setError(null);
+
+    getTopics()
+      .then((data) => {
+        setTopics(data);
+      })
+      .catch((err) => {
+        setError("Failed to fetch topics");
+      });
+
+    getArticles(params)
+      .then((data) => {
+        setArticles(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError("Failed to fetch articles");
+        setLoading(false);
+      });
+  }, [topicQuery, sortByQuery, orderQuery]);
+
   const handleChange = (event) => {
     const topic = event.target.value;
-    setSearchParams(topic ? { topic } : "");
+    setSearchParams({ ...Object.fromEntries(searchParams), topic });
+  };
+
+  const handleSortBy = (event) => {
+    const sort = event.target.value;
+    setSearchParams({ ...Object.fromEntries(searchParams), sort_by: sort });
+  };
+
+  const handleOrderChange = (event) => {
+    const order = event.target.value;
+    setSearchParams({ ...Object.fromEntries(searchParams), order });
   };
 
   if (loading) {
     return <p>Loading all articles...</p>;
   }
+  if (error) {
+    return <p>{error}</p>;
+  }
 
   return (
     <>
       <div className="topic-dropdown">
-        <label>Filter by topic: </label>
-        <select className="topics" onChange={handleChange} value={topicQuery}>
+        <label htmlFor="topics-select">Filter by topic: </label>
+        <select
+          id="topics-select"
+          className="topics"
+          onChange={handleChange}
+          value={topicQuery}
+        >
           <option value="">All Topics</option>
           {topics.map((topic) => {
             return (
@@ -43,6 +80,33 @@ const ArticleContainer = () => {
               </option>
             );
           })}
+        </select>
+      </div>
+
+      <div className="sort_by-dropdown">
+        <label htmlFor="sort_by-select">Sort by:</label>
+        <select
+          id="sort_by-select"
+          className="sort"
+          onChange={handleSortBy}
+          value={sortByQuery}
+        >
+          <option value="created_at">Date</option>
+          <option value="comment_count">Comment Count</option>
+          <option value="votes">Votes</option>
+        </select>
+      </div>
+
+      <div className="order-dropdown">
+        <label htmlFor="order-select">Order by:</label>
+        <select
+          id="order-select"
+          className="order"
+          onChange={handleOrderChange}
+          value={orderQuery}
+        >
+          <option value="desc">Descending</option>
+          <option value="asc">Ascendinng</option>
         </select>
       </div>
 
