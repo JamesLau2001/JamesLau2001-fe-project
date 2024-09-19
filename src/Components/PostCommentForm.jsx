@@ -34,11 +34,12 @@ const PostCommentForm = ({ username }) => {
   };
   return (
     <form className="post-comment-form" onSubmit={handleSubmit}>
-      <label className="post-comment-label" htmlFor="body">
+      <label className="post-comment-label" htmlFor="comment-body">
         Please write your comment here:
       </label>
       <input
         className="post-comment-input"
+        id = "comment-body"
         name="body"
         onChange={handleBody}
         value={body}

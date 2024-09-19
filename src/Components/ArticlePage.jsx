@@ -3,30 +3,44 @@ import { useParams, Link } from "react-router-dom";
 import { getArticleById, patchVotesByArticleId } from "../api";
 
 import Comments from "./Comments";
-const ArticlePage = ({username}) => {
+const ArticlePage = ({ username }) => {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [currentVotes, setCurrentVotes] = useState(0);
 
   useEffect(() => {
-    getArticleById(article_id).then((data) => {
-      setArticle(data);
-      setCurrentVotes(data.votes);
-      setLoading(false);
-    });
+    setLoading(true);
+    setError(null);
+    getArticleById(article_id)
+      .then((data) => {
+        setArticle(data);
+        setCurrentVotes(data.votes);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError("Failed to load the article");
+        setLoading(false);
+      });
   }, []);
-
 
   const handleVote = (voteToHandle) => {
     setCurrentVotes((prevVotes) => prevVotes + voteToHandle);
-    patchVotesByArticleId(article_id, voteToHandle).then((newData) => {
-      setArticle(newData);
-    });
+    patchVotesByArticleId(article_id, voteToHandle)
+      .then((newData) => {
+        setArticle(newData);
+      })
+      .catch((err) => {
+        setError("Failed to update votes");
+      });
   };
 
   if (loading) return <p>Loading article...</p>;
-
+  if (error) {
+    return <p>{error}</p>;
+  }
+  
   return (
     <div className="article-page">
       <h2 className="article-title">{article.title}</h2>
@@ -43,9 +57,11 @@ const ArticlePage = ({username}) => {
       </div>
       <p>Written at: {article.created_at}</p>
 
-      <Link to={`/articles/${article_id}/comments`}><button>Post Comment</button></Link>
+      <Link to={`/articles/${article_id}/comments`}>
+        <button>Post Comment</button>
+      </Link>
 
-      <Comments article_id={article_id} username = {username}/>
+      <Comments article_id={article_id} username={username} />
     </div>
   );
 };

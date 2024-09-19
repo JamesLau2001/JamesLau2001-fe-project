@@ -16,8 +16,8 @@ const Login = ({ username, setUsername }) => {
 
   return (
     <div className="login">
-      <label>Choose a user: </label>
-      <select onChange={handleChange} value={username}>
+      <label htmlFor="user-select">Choose a user: </label>
+      <select id="user-select" onChange={handleChange} value={username}>
         <option value="" disabled>
           Select User
         </option>
