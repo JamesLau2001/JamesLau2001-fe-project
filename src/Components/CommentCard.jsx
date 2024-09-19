@@ -2,6 +2,7 @@ import { useState } from "react";
 import { deleteComment } from "../api";
 const CommentCard = ({ comment, username }) => {
   const [isDeleted, setIsDeleted] = useState(false);
+  const [error, setError] = useState(null);
   const handleDelete = (event) => {
     event.preventDefault();
 
@@ -9,9 +10,13 @@ const CommentCard = ({ comment, username }) => {
       "Are you sure you want to delete this comment?"
     );
     if (confirmDelete) {
-      deleteComment(comment.comment_id).then(() => {
-        setIsDeleted(true);
-      });
+      deleteComment(comment.comment_id)
+        .then(() => {
+          setIsDeleted(true);
+        })
+        .catch((err) => {
+          setError("Failed to delete comment");
+        });
     }
   };
 
@@ -19,6 +24,9 @@ const CommentCard = ({ comment, username }) => {
     return null;
   }
 
+  if (error) {
+    return <p>{error}</p>;
+  }
   return (
     <div className="comment-card">
       <p>Written by: {comment.author}</p>
