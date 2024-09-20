@@ -16,4 +16,4 @@ In order to post a comment, the user must press the "post comment" button, to wh
 
 Finally, should the user want to return to the homepage at any point, they can press the header "NC News" or press "home" in the navigation bar.
 
-This portfolio project was created as part of a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/)
+This portfolio project was created as part of a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/).
