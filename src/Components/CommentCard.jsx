@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { deleteComment } from "../api";
+import ErrorComponent from "./ErrorComponent";
 const CommentCard = ({ comment, username }) => {
   const [isDeleted, setIsDeleted] = useState(false);
   const [error, setError] = useState(null);
+  
   const handleDelete = (event) => {
     event.preventDefault();
 
@@ -15,7 +17,7 @@ const CommentCard = ({ comment, username }) => {
           setIsDeleted(true);
         })
         .catch((err) => {
-          setError("Failed to delete comment");
+          setError(err);
         });
     }
   };
@@ -25,8 +27,9 @@ const CommentCard = ({ comment, username }) => {
   }
 
   if (error) {
-    return <p>{error}</p>;
+    return <ErrorComponent message = {error.message}/>;
   }
+
   return (
     <div className="comment-card">
       <p>Written by: {comment.author}</p>

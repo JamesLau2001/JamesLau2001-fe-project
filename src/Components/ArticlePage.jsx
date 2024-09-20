@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getArticleById, patchVotesByArticleId } from "../api";
-
+import ErrorComponent from "./ErrorComponent";
 import Comments from "./Comments";
 const ArticlePage = ({ username }) => {
   const { article_id } = useParams();
@@ -20,7 +20,7 @@ const ArticlePage = ({ username }) => {
         setLoading(false);
       })
       .catch((err) => {
-        setError("Failed to load the article");
+        setError(err);
         setLoading(false);
       });
   }, []);
@@ -32,15 +32,16 @@ const ArticlePage = ({ username }) => {
         setArticle(newData);
       })
       .catch((err) => {
-        setError("Failed to update votes");
+        setError(err);
+        setCurrentVotes((prevVotes) => prevVotes - voteToHandle);
       });
   };
 
   if (loading) return <p>Loading article...</p>;
   if (error) {
-    return <p>{error}</p>;
+    return <ErrorComponent message={error.message} />;
   }
-  
+
   return (
     <div className="article-page">
       <h2 className="article-title">{article.title}</h2>
@@ -52,13 +53,13 @@ const ArticlePage = ({ username }) => {
       <p className="article-body">{article.body}</p>
       <div className="article-votes">
         <p className="article-current-votes">Votes: {currentVotes}</p>
-        <button onClick={() => handleVote(1)}>Like</button>
-        <button onClick={() => handleVote(-1)}>Dislike</button>
+        <button className= "like-dislike-buttons" onClick={() => handleVote(1)}>Like</button>
+        <button className= "like-dislike-buttons" onClick={() => handleVote(-1)}>Dislike</button>
       </div>
       <p>Written at: {article.created_at}</p>
 
       <Link to={`/articles/${article_id}/comments`}>
-        <button>Post Comment</button>
+        <button className= "article-post-comment">Post Comment</button>
       </Link>
 
       <Comments article_id={article_id} username={username} />

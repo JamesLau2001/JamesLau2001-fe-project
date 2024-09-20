@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { postComment } from "../api";
-
+import ErrorComponent from "./ErrorComponent";
 const PostCommentForm = ({ username }) => {
   const { article_id } = useParams();
   const [body, setBody] = useState("");
@@ -29,9 +29,11 @@ const PostCommentForm = ({ username }) => {
     } else {
       postComment(article_id, body, username).then(() => {
         navigate(-1);
-      });
+      })
     }
   };
+
+  
   return (
     <form className="post-comment-form" onSubmit={handleSubmit}>
       <label className="post-comment-label" htmlFor="comment-body">

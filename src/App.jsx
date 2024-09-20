@@ -4,7 +4,8 @@ import Header from "./Components/Header";
 import ArticleContainer from "./Components/ArticleContainer";
 import ArticlePage from "./Components/ArticlePage";
 import PostCommentForm from "./Components/PostCommentForm";
-import Login from "./Components/Login";
+import Nav from "./Components/Nav";
+import NotFound from "./Components/NotFound";
 import "./App.css";
 
 function App() {
@@ -12,14 +13,18 @@ function App() {
   return (
     <div className="app">
       <Header />
-      <Login username={username} setUsername={setUsername} />
+      <Nav username={username} setUsername={setUsername} />
       <Routes>
         <Route path="/" element={<ArticleContainer />} />
-        <Route path="/articles/:article_id" element={<ArticlePage username = {username}/>} />
+        <Route
+          path="/articles/:article_id"
+          element={<ArticlePage username={username} />}
+        />
         <Route
           path="/articles/:article_id/comments"
-          element={<PostCommentForm username = {username}/>}
+          element={<PostCommentForm username={username} />}
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
