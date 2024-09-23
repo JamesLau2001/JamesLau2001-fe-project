@@ -22,7 +22,6 @@ a {
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  background-color: azure;
 }
 
 .article-title {
@@ -339,5 +338,13 @@ a {
 
   .post-new-comment-button {
     width: 100%;
+  }
+
+  .like-dislike-buttons {
+    display:flex;
+    width: 22%; 
+    text-align: center;
+    align-items: center;
+    justify-content: center;
   }
 }

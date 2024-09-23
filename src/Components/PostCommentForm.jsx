@@ -39,13 +39,13 @@ const PostCommentForm = ({ username }) => {
       <label className="post-comment-label" htmlFor="comment-body">
         Please write your comment here:
       </label>
-      <input
+      <textarea
         className="post-comment-input"
         id = "comment-body"
         name="body"
         onChange={handleBody}
         value={body}
-      ></input>
+      ></textarea>
       {error ? <p>{error}</p> : null}
       <button className="post-new-comment-button">Post Comment</button>
     </form>
