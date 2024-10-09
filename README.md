@@ -4,7 +4,7 @@ The app emulates a news app and allows users to view articles, filter them by to
 
 To fork and clone this repository, fork a copy of the original repository and copy the unique link to your dashboard, and run $git clone <link>.
 
-To run this locally and not through the app, ensure to install all the required packages and dependencies by running $npm i and then running $npm run dev to launch the website, or to access the app: please follow: https://jlauncnews.netlify.app. Note: Node v22.5.1 will be required to run this repository.
+To run this locally, ensure to install all the required packages and dependencies by running $npm i and then running $npm run dev to launch the website, or to access the app, please follow: https://jlauncnews.netlify.app. Note: Node v22.5.1 will be required to run this repository.
 
 Once the app/website is launched, the user will be directed to the home page, where the user will have a view of all the articles within the API. On this homepage, the user is able to choose the user they wish to sign in as and is also able to filter articles by their topics using the given drop-down list. On top of this, the user is then able to use drop-downs to sort by date, comment count, and votes in either descending or ascending order, where the default is all topics sorted by date in descending order.
 The user is also able to enter queries directly into the URL "/?topic=query&sort_by=query_count&order=query!"; however, should the page not exist, they will be redirected to the appropriate error message page.
